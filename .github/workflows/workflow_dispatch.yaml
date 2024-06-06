@@ -24,6 +24,3 @@ jobs:
           run: |
             echo Name: ${{ inputs.name }}
             echo ENV: ${{ inputs.env }}
-
-        
-                
