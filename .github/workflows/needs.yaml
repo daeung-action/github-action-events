@@ -1,0 +1,36 @@
+name: needs-workflow
+on: push
+jobs: 
+    job1:
+        runs-on: ubuntu-latest
+        steps:  
+        - name: step
+          run: |
+            echo job1
+    job2:
+        runs-on: ubuntu-latest
+        needs: 
+        - job1
+        steps:  
+        - name: step
+          run: |
+            echo job2
+    job3:
+        runs-on: ubuntu-latest
+        steps: 
+        - name: step
+          run: |
+            echo job3
+            exit 1
+    job4:
+        runs-on: ubuntu-latest
+        needs: 
+        - job3
+        steps:  
+        - name: step
+          run: |
+            echo job4
+
+# 1>  job1, job3 은 종속성이 없으므로 병렬로 실행됨
+# 2>  job2 는 job 1 이후에 실행됨
+# 3>  job3 은 실패하므로 job4 는 실행되지 않고 실패함
