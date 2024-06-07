@@ -2,7 +2,7 @@ name: branch-filter
 on:
   push: 
     branches:
-    - pr-test
+    - dev
 jobs:
     context:
         runs-on: ubuntu-latest
