@@ -1,0 +1,11 @@
+name: branch-filter
+on:
+  push: 
+    branches:
+    - pr-test
+jobs:
+    context:
+        runs-on: ubuntu-latest
+        steps:
+        - name: github context print
+          run: echo '${{ toJSON(github) }}'
