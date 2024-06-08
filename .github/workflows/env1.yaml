@@ -1,0 +1,33 @@
+name: environment
+on: push
+env: 
+    test: workflow_env 
+jobs:
+    get-workflow-env:
+        runs-on: ubuntu-latest
+        steps:
+        - name: check job env
+          run: echo "${{ env.test }}" # workflow_env
+    get-job-env:
+        runs-on: ubuntu-latest
+        env:
+            test: job_env
+        steps:
+        - name: check job env
+          run: echo "${{ env.test }}" # job_env
+    get-step-env:
+        runs-on: ubuntu-latest
+        env:
+            test: job_env
+        steps:
+        - name: check job env
+          env:
+            test: step_env
+          run: echo "${{ env.test }}" # step_env
+    get-env:
+        runs-on: ubuntu-latest 
+        steps:
+        - name: create env 
+          run: echo "test=create_env" >> $GITHUB_ENV 
+        - name: echo env
+          run: echo "${{ env.test }}" # create_env
