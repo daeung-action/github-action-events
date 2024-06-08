@@ -10,6 +10,6 @@ jobs:
             count=0
             while true; do
               echo "seconds: $count"
-              ((count++))
+              count=$((count++))
               sleep 1
             done
