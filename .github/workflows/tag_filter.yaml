@@ -9,3 +9,6 @@ jobs:
         steps:
         - name: echo
           run: echo hello
+
+# git tag v1.0.0
+# git push origin v1.0.0
