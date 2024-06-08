@@ -1,0 +1,10 @@
+name: environment
+on: push
+env: 
+    test: workflow_env 
+jobs:
+    get-workflow-env:
+        runs-on: ubuntu-latest
+        steps:
+        - name: check github env
+          run: echo "${{ vars.TEST }}"
