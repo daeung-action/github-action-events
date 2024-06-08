@@ -3,6 +3,8 @@ on: push
 
 jobs:
     create-output:
+        outputs:
+            test: ${{ steps.echo_output.outputs.testk }}
         runs-on: ubuntu-latest
         steps:
         - name: echo output
@@ -12,3 +14,11 @@ jobs:
         - name: check output
           run: |
             echo ${{ steps.echo_output.outputs.testk }}
+    get-output:
+        needs:
+        - create-output
+        runs-on: ubuntu-latest
+        steps:
+        - name: get output
+          run: |
+            echo ${{ needs.create-output.outputs.test }}
