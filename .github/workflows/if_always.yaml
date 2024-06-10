@@ -1,0 +1,22 @@
+name: if-step
+on:
+    push:
+    workflow_dispatch: 
+
+jobs:
+    job1:
+        runs-on: ubuntu-latest 
+        steps:
+        - name: exit1
+          run: exit 1
+    job2:
+        runs-on: ubuntu-latest 
+        needs: 
+        - job1
+        if: always()
+        steps:
+        - name: exit1
+          run: exit 1
+        - name: run always
+          if: always()
+          run: echo ${{ github.event_name }}
